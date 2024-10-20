@@ -4,6 +4,7 @@ import ProductsSection from "./ProductsSection";
 import ProductsFilterSection from "./ProductsFilterSection";
 import ProductItemsSection from "./ProductItemsSection";
 import ScrollToTop from "./ScrollToTop";
+import DevelopmentPhase from "./DevelopmentPhase";
 
 export {
   Header,
@@ -12,4 +13,5 @@ export {
   ProductsFilterSection,
   ProductItemsSection,
   ScrollToTop,
+  DevelopmentPhase,
 };

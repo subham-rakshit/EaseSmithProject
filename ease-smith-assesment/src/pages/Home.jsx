@@ -1,5 +1,5 @@
 import React from "react";
-import DevelopmentPhase from "../components/DevelopmentPhase";
+import { DevelopmentPhase } from "../components";
 
 function Home() {
   return <DevelopmentPhase />;
