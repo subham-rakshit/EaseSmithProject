@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import { FaGripLines } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
@@ -8,6 +9,7 @@ function Header() {
   const [path, setPath] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { cartProductList } = useSelector((state) => state.cartProduct);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location);
@@ -122,7 +124,7 @@ function Header() {
               Cart
             </span>
             <p className="absolute -top-3 left-full -translate-x-[100%] w-[19px] h-[19px] rounded-full bg-[#F3A939] text-[8px] xl:text-[11px] font-[Poppins] text-[#000] flex justify-center items-center">
-              0
+              {cartProductList.length}
             </p>
           </div>
           {/* Mobile Navigation Items */}

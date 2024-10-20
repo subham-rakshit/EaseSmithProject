@@ -4,13 +4,27 @@ import { LuIndianRupee } from "react-icons/lu";
 import { FaMinus } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { MdClose } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { productItemAddToCart } from "../redux-slice/ProductItemSlice";
 
 function ProductItemsSection() {
   const [numberOfProduct, setNumberOfProduct] = useState(6);
+  const [productDetails, setProductDetails] = useState(null);
+  const [openModel, setOpenModel] = useState(false);
+  const dispatch = useDispatch();
 
   //NOTE: Increase the numberOfProduct by 6
   const onViewMore = () => {
     setNumberOfProduct(numberOfProduct + numberOfProduct);
+  };
+
+  //NOTE: Store product item in local storage
+  const handleAddToCartItem = () => {
+    if (productDetails) {
+      dispatch(productItemAddToCart(productDetails));
+      setOpenModel(false);
+    }
   };
 
   const sliceProduct = productList.slice(0, numberOfProduct); //NOTE: Slice the productList according to numberOfProduct
@@ -32,7 +46,7 @@ function ProductItemsSection() {
         </div>
       </div>
       {/* Product Items Section */}
-      <ul className="flex flex-wrap gap-5 mt-5">
+      <ul className="relative flex flex-wrap gap-5 mt-5">
         {sliceProduct.map((item, index) => {
           return (
             <li className="w-[260px]" key={`${item.productName}-${index}`}>
@@ -84,6 +98,10 @@ function ProductItemsSection() {
                   <button
                     type="button"
                     className="flex items-center justify-between gap-2 bg-[#165315] rounded-lg px-2 py-1 flex-1"
+                    onClick={() => {
+                      setProductDetails(item);
+                      setOpenModel(true);
+                    }}
                   >
                     <FaMinus size="13" color="white" />
                     <span className="text-[13px] font-[Poppins] text-[#fff] font-medium">
@@ -99,6 +117,68 @@ function ProductItemsSection() {
             </li>
           );
         })}
+        {/* Add to cart model */}
+        {openModel && (
+          <div className="absolute left-1/2 -translate-x-[50%] w-full max-w-[453px] h-[661px] bg-[#cae5b5] rounded-xl">
+            <div className="relative w-full max-w-[453px] h-[661px] flex flex-col">
+              <button
+                type="button"
+                className="mt-5 mr-5 self-end z-[50]"
+                onClick={() => setOpenModel(false)}
+              >
+                <MdClose size={20} />
+              </button>
+              <img
+                src="/Ellipse-40.png"
+                alt="object"
+                className="absolute top-full -translate-y-[100%]"
+              />
+              <img
+                src="/Ellipse-41.png"
+                alt="object"
+                className="absolute left-full -translate-x-[100%]"
+              />
+              <div className="w-full h-full flex flex-col items-center z-[50]">
+                <h1 className="text-[20px] text-[#0F4811] font-[Poppins] font-normal border-b border-[#B0B0B0] w-[90%] text-center pb-2">
+                  Confirmation Message
+                </h1>
+                <div className="w-full h-full flex flex-col justify-center items-center gap-5">
+                  <h1 className="text-[24px] text-[#0F4811] font-[Poppins] font-semibold w-[80%] text-center mt-5">
+                    Confirm Your Order!
+                  </h1>
+                  <img
+                    src={productDetails ? productDetails.productImage : ""}
+                    alt={productDetails ? productDetails.productName : ""}
+                    className="w-[100px] h-[100px] bg-cover rounded-full mt-5"
+                  />
+                  <p className="text-[16px] text-[#165315] font-[Poppins] font-normal mt-5">
+                    {productDetails ? "Indoor Plant, Low maintenance" : ""}
+                  </p>
+                  {/* Product Confirmation Buttons */}
+                  <div className="flex items-center gap-3 mt-5">
+                    <button
+                      type="button"
+                      className="text-[20px] font-semibold font-[Poppins] text-[#fff] bg-[#165315] w-[115px] h-[37px]"
+                      onClick={handleAddToCartItem}
+                    >
+                      Confirm
+                    </button>
+                    <button
+                      type="button"
+                      className="text-[20px] font-light font-[Poppins] text-[#e90a0a] border border-[#e90a0a] w-[115px] h-[37px]"
+                      onClick={() => {
+                        setOpenModel(false);
+                        setProductDetails(null);
+                      }}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </ul>
       {/* View More button */}
 
