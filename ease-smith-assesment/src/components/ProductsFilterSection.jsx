@@ -2,7 +2,7 @@ import React from "react";
 
 function ProductsFilterSection() {
   return (
-    <div className="w-[304px] h-[fit-content] px-4 py-2 bg-[#f0ffe5]">
+    <div className="hidden sm:inline-block w-[304px] h-[fit-content] px-4 py-2 bg-[#f0ffe5]">
       <div className="flex items-center justify-between border-b-[1px] border-[#A8A8A8] py-2">
         <span className="text-[16px] font-normal font-[Inter] text-[#6E6E6E]">
           Filter

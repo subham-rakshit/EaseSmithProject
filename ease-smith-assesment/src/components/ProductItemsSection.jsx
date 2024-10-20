@@ -3,6 +3,7 @@ import { productList } from "../data/products";
 import { LuIndianRupee } from "react-icons/lu";
 import { FaMinus } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 function ProductItemsSection() {
   const [numberOfProduct, setNumberOfProduct] = useState(6);
@@ -41,12 +42,14 @@ function ProductItemsSection() {
                   alt={`${item.productName}${index}`}
                   className="w-[255px] h-[246px] bg-cover"
                 />
-                <button
-                  type="button"
-                  className="bg-[#165315] w-full h-[36px] text-[#fff] font-[Poppins] font-semibold text-[16px]"
-                >
-                  View Product
-                </button>
+                <Link to={`/thank-you/${item.productName}`}>
+                  <button
+                    type="button"
+                    className="bg-[#165315] w-full h-[36px] text-[#fff] font-[Poppins] font-semibold text-[16px]"
+                  >
+                    View Product
+                  </button>
+                </Link>
               </div>
               <div className="flex flex-col mt-3">
                 <h1 className="text-[20px] font-medium text-[#000] font-[Poppins]">

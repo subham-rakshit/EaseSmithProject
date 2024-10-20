@@ -9,13 +9,14 @@ import {
   Tools,
   ThankYouPage,
 } from "./pages";
-import { Header, Footer } from "./components";
+import { Header, Footer, ScrollToTop } from "./components";
 
 function App() {
   return (
     <div className="w-full min-h-full flex flex-col items-center">
       <BrowserRouter>
         <Header />
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<PlantsPots />} />
@@ -24,7 +25,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/story" element={<Story />} />
           <Route path="/faqs" element={<FAQs />} />
-          <Route path="/thank-you" element={<ThankYouPage />} />
+          <Route path="/thank-you/:productName" element={<ThankYouPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>
