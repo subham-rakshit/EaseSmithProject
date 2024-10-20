@@ -1,5 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Blog, FAQs, Home, PlantsPots, Services, Story, Tools } from "./pages";
+import {
+  Blog,
+  FAQs,
+  Home,
+  PlantsPots,
+  Services,
+  Story,
+  Tools,
+  ThankYouPage,
+} from "./pages";
 import { Header, Footer } from "./components";
 
 function App() {
@@ -15,6 +24,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/story" element={<Story />} />
           <Route path="/faqs" element={<FAQs />} />
+          <Route path="/thank-you" element={<ThankYouPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>

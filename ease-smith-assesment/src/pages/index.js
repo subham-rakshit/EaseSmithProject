@@ -5,5 +5,6 @@ import Services from "./Services.jsx";
 import Blog from "./Blog.jsx";
 import Story from "./Story.jsx";
 import FAQs from "./FAQs.jsx";
+import ThankYouPage from "./ThankYouPage.jsx";
 
-export { Home, PlantsPots, Tools, Services, Blog, Story, FAQs };
+export { Home, PlantsPots, Tools, Services, Blog, Story, FAQs, ThankYouPage };

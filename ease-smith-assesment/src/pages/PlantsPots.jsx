@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { nurseryLists } from "../data/carousal-data";
+import { ProductsSection } from "../components";
 
 function PlantsPots() {
   const carousalBoxRef = useRef(null); //INFO: Carousal Images Container reference
@@ -124,6 +125,8 @@ function PlantsPots() {
           </ul>
         </div>
       </div>
+      {/* Products Section */}
+      <ProductsSection />
     </div>
   );
 }
